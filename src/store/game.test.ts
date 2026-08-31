@@ -37,20 +37,20 @@ describe('Game State Store', () => {
   })
 
   it('should unlock postcards when checkpoints are crossed', () => {
-    // Before checkpoint 0 (15%)
-    updateScrollProgress(14)
+    // Before postcard 0 reaches the middle of the viewport
+    updateScrollProgress(6.24)
     expect(gameState.unlockedPostcards).toEqual([])
 
-    // Cross checkpoint 0 (15%)
-    updateScrollProgress(15)
+    // Postcard 0 reaches the middle of the viewport
+    updateScrollProgress(6.25)
     expect(gameState.unlockedPostcards).toEqual([0])
 
     // Re-verify that crossing it again does not duplicate the unlock
     updateScrollProgress(20)
     expect(gameState.unlockedPostcards).toEqual([0])
 
-    // Cross checkpoint 1 (29%)
-    updateScrollProgress(29)
+    // Postcard 1 reaches the middle of the viewport
+    updateScrollProgress(23.75)
     expect(gameState.unlockedPostcards).toEqual([0, 1])
 
     // Cross all checkpoints

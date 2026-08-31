@@ -1,6 +1,8 @@
 import { reactive } from 'vue'
 
-export const CHECKPOINTS = [15, 29, 43, 57, 71, 85]
+// The trail is 500vh tall with 400vh of scrollable distance. These progress
+// values correspond to each postcard reaching the middle of the viewport.
+export const CHECKPOINTS = [6.25, 23.75, 41.25, 58.75, 76.25, 93.75]
 
 export const gameState = reactive({
   hasStarted: false,

@@ -160,32 +160,32 @@ onBeforeUnmount(() => {
     <!-- Postcards Placed along the trail -->
     <div class="absolute inset-x-0 top-0 h-full pointer-events-none">
       
-      <!-- Postcard 1 (Left) - Triggered at 15% -->
+      <!-- Postcard 1 (Left) - Positioned at 15% -->
       <div class="absolute top-[15%] left-4 right-4 md:left-24 md:right-auto md:w-96 pointer-events-auto">
         <PostcardItem :index="0" side="left" />
       </div>
 
-      <!-- Postcard 2 (Right) - Triggered at 29% -->
+      <!-- Postcard 2 (Right) - Positioned at 29% -->
       <div class="absolute top-[29%] left-4 right-4 md:right-24 md:left-auto md:w-96 pointer-events-auto">
         <PostcardItem :index="1" side="right" />
       </div>
 
-      <!-- Postcard 3 (Left) - Triggered at 43% -->
+      <!-- Postcard 3 (Left) - Positioned at 43% -->
       <div class="absolute top-[43%] left-4 right-4 md:left-24 md:right-auto md:w-96 pointer-events-auto">
         <PostcardItem :index="2" side="left" />
       </div>
 
-      <!-- Postcard 4 (Right) - Triggered at 57% -->
+      <!-- Postcard 4 (Right) - Positioned at 57% -->
       <div class="absolute top-[57%] left-4 right-4 md:right-24 md:left-auto md:w-96 pointer-events-auto">
         <PostcardItem :index="3" side="right" />
       </div>
 
-      <!-- Postcard 5 (Left) - Triggered at 71% -->
+      <!-- Postcard 5 (Left) - Positioned at 71% -->
       <div class="absolute top-[71%] left-4 right-4 md:left-24 md:right-auto md:w-96 pointer-events-auto">
         <PostcardItem :index="4" side="left" />
       </div>
 
-      <!-- Postcard 6 (Right) - Triggered at 85% -->
+      <!-- Postcard 6 (Right) - Positioned at 85% -->
       <div class="absolute top-[85%] left-4 right-4 md:right-24 md:left-auto md:w-96 pointer-events-auto">
         <PostcardItem :index="5" side="right" />
       </div>
