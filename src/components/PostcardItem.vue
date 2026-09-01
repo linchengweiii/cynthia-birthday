@@ -1,6 +1,37 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { gameState, setActivePostcard } from '@/store/game'
+import postcard0 from '@/assets/postcards/postcard_0.png'
+import postcard1 from '@/assets/postcards/postcard_1.png'
+import postcard2 from '@/assets/postcards/postcard_2.png'
+import postcard3 from '@/assets/postcards/postcard_3.png'
+import postcard4 from '@/assets/postcards/postcard_4.png'
+import postcard5 from '@/assets/postcards/postcard_5.png'
+import postcard6 from '@/assets/postcards/postcard_6.png'
+import postcard7 from '@/assets/postcards/postcard_7.png'
+import postcard8 from '@/assets/postcards/postcard_8.png'
+import postcard9 from '@/assets/postcards/postcard_9.png'
+import postcard10 from '@/assets/postcards/postcard_10.png'
+import postcard11 from '@/assets/postcards/postcard_11.png'
+import postcard12 from '@/assets/postcards/postcard_12.png'
+import postcard13 from '@/assets/postcards/postcard_13.png'
+
+const postcardImages = [
+  postcard0,
+  postcard1,
+  postcard2,
+  postcard3,
+  postcard4,
+  postcard5,
+  postcard6,
+  postcard7,
+  postcard8,
+  postcard9,
+  postcard10,
+  postcard11,
+  postcard12,
+  postcard13
+]
 
 const props = defineProps<{
   index: number
@@ -10,10 +41,7 @@ const props = defineProps<{
 // Check if this postcard has been unlocked
 const isUnlocked = computed(() => gameState.unlockedPostcards.includes(props.index))
 
-// Map index to the local import path of postcard image
-const imagePath = computed(() => {
-  return new URL(`../assets/postcards/postcard_${props.index}.png`, import.meta.url).href
-})
+const imagePath = computed(() => postcardImages[props.index] ?? '')
 
 // Check if this postcard is currently clicked open in zoom mode
 const isActive = computed(() => gameState.activePostcard === props.index)

@@ -1,8 +1,22 @@
 import { reactive } from 'vue'
 
-// The trail is 500vh tall with 400vh of scrollable distance. These progress
-// values correspond to each postcard reaching the middle of the viewport.
-export const CHECKPOINTS = [6.25, 23.75, 41.25, 58.75, 76.25, 93.75]
+export const POSTCARD_COUNT = 14
+export const TRACK_HEIGHT_VH = 1080
+
+const FIRST_POSTCARD_VH = 75
+const POSTCARD_GAP_VH = 70
+const SCROLLABLE_TRACK_VH = TRACK_HEIGHT_VH - 100
+
+export const POSTCARD_POSITIONS = Array.from(
+  { length: POSTCARD_COUNT },
+  (_, index) => ((FIRST_POSTCARD_VH + index * POSTCARD_GAP_VH) / TRACK_HEIGHT_VH) * 100
+)
+
+// Unlock each postcard when it reaches the middle of the viewport.
+export const CHECKPOINTS = Array.from(
+  { length: POSTCARD_COUNT },
+  (_, index) => ((FIRST_POSTCARD_VH + index * POSTCARD_GAP_VH - 50) / SCROLLABLE_TRACK_VH) * 100
+)
 
 export const gameState = reactive({
   hasStarted: false,

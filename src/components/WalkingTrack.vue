@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, computed } from 'vue'
-import { gameState, updateScrollProgress, setWalking } from '@/store/game'
+import {
+  gameState,
+  POSTCARD_POSITIONS,
+  TRACK_HEIGHT_VH,
+  updateScrollProgress,
+  setWalking
+} from '@/store/game'
 import PostcardItem from './PostcardItem.vue'
 import BirthdayPluck from './BirthdayPluck.vue'
 import rockPikminImg from '@/assets/rock_pikmin.png'
@@ -124,7 +130,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div v-if="gameState.hasStarted" class="relative min-h-[500vh] bg-gradient-to-b from-emerald-100 via-green-100 to-yellow-50">
+  <div
+    v-if="gameState.hasStarted"
+    class="relative bg-gradient-to-b from-emerald-100 via-green-100 to-yellow-50"
+    :style="{ minHeight: `${TRACK_HEIGHT_VH}vh` }"
+  >
     
     <!-- Floating Progress Bar -->
     <div class="fixed top-0 left-0 right-0 z-30 h-1.5 bg-emerald-200">
@@ -160,34 +170,14 @@ onBeforeUnmount(() => {
     <!-- Postcards Placed along the trail -->
     <div class="absolute inset-x-0 top-0 h-full pointer-events-none">
       
-      <!-- Postcard 1 (Left) - Positioned at 15% -->
-      <div class="absolute top-[15%] left-4 right-4 md:left-24 md:right-auto md:w-96 pointer-events-auto">
-        <PostcardItem :index="0" side="left" />
-      </div>
-
-      <!-- Postcard 2 (Right) - Positioned at 29% -->
-      <div class="absolute top-[29%] left-4 right-4 md:right-24 md:left-auto md:w-96 pointer-events-auto">
-        <PostcardItem :index="1" side="right" />
-      </div>
-
-      <!-- Postcard 3 (Left) - Positioned at 43% -->
-      <div class="absolute top-[43%] left-4 right-4 md:left-24 md:right-auto md:w-96 pointer-events-auto">
-        <PostcardItem :index="2" side="left" />
-      </div>
-
-      <!-- Postcard 4 (Right) - Positioned at 57% -->
-      <div class="absolute top-[57%] left-4 right-4 md:right-24 md:left-auto md:w-96 pointer-events-auto">
-        <PostcardItem :index="3" side="right" />
-      </div>
-
-      <!-- Postcard 5 (Left) - Positioned at 71% -->
-      <div class="absolute top-[71%] left-4 right-4 md:left-24 md:right-auto md:w-96 pointer-events-auto">
-        <PostcardItem :index="4" side="left" />
-      </div>
-
-      <!-- Postcard 6 (Right) - Positioned at 85% -->
-      <div class="absolute top-[85%] left-4 right-4 md:right-24 md:left-auto md:w-96 pointer-events-auto">
-        <PostcardItem :index="5" side="right" />
+      <div
+        v-for="(position, index) in POSTCARD_POSITIONS"
+        :key="index"
+        class="absolute left-4 right-4 pointer-events-auto md:w-96"
+        :class="index % 2 === 0 ? 'md:left-24 md:right-auto' : 'md:right-24 md:left-auto'"
+        :style="{ top: `${position}%` }"
+      >
+        <PostcardItem :index="index" :side="index % 2 === 0 ? 'left' : 'right'" />
       </div>
 
     </div>
